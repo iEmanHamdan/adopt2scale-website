@@ -10,14 +10,14 @@
   
   <style>
     :root {
-      --bg-dark: #16072b;
-      --bg-card: #23103f;
-      --bg-card-hover: #2e1650;
+      --bg-dark: #120422;
+      --bg-card: #1f0b35;
+      --bg-card-hover: #2d124d;
       --accent-gold: #c69c43;
       --accent-gold-hover: #ddb256;
       --text-main: #ffffff;
       --text-muted: #c3b9d6;
-      --border-color: rgba(198, 156, 67, 0.2);
+      --border-color: rgba(198, 156, 67, 0.25);
       --font-family: 'Plus Jakarta Sans', sans-serif;
     }
 
@@ -41,29 +41,38 @@
       margin: auto;
     }
 
-    /* Navbar */
+    /* Navigation */
     .navbar {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 24px 0;
+      padding: 20px 0;
       position: sticky;
       top: 0;
-      background: rgba(22, 7, 43, 0.9);
+      background: rgba(18, 4, 34, 0.95);
       backdrop-filter: blur(10px);
       z-index: 100;
       border-bottom: 1px solid var(--border-color);
     }
 
-    .logo {
-      font-size: 1.4rem;
-      font-weight: 800;
-      letter-spacing: 2px;
+    .nav-brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
       color: #fff;
     }
 
-    .logo span {
-      color: var(--accent-gold);
+    .nav-brand img {
+      height: 42px;
+      width: auto;
+      object-fit: contain;
+    }
+
+    .nav-brand span {
+      font-size: 1.3rem;
+      font-weight: 800;
+      letter-spacing: 1.5px;
     }
 
     .nav-links {
@@ -97,7 +106,7 @@
 
     .btn-gold {
       background-color: var(--accent-gold);
-      color: #120424;
+      color: #120422;
       border: 1px solid var(--accent-gold);
     }
 
@@ -118,13 +127,14 @@
 
     /* Hero Section */
     .hero {
+      position: relative;
       text-align: center;
-      padding: 100px 0 80px;
+      padding: 90px 0 60px;
     }
 
     .hero-badge {
       display: inline-block;
-      padding: 6px 16px;
+      padding: 6px 18px;
       background: rgba(198, 156, 67, 0.15);
       border: 1px solid var(--border-color);
       border-radius: 50px;
@@ -137,7 +147,7 @@
     }
 
     .hero h1 {
-      font-size: 3.5rem;
+      font-size: 3.4rem;
       font-weight: 800;
       line-height: 1.2;
       margin-bottom: 20px;
@@ -154,6 +164,22 @@
       display: flex;
       gap: 16px;
       justify-content: center;
+      margin-bottom: 50px;
+    }
+
+    .hero-banner-wrap {
+      border-radius: 14px;
+      overflow: hidden;
+      border: 1px solid var(--border-color);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+      max-height: 450px;
+    }
+
+    .hero-banner-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
     }
 
     /* Section Global */
@@ -179,7 +205,7 @@
       margin-top: 8px;
     }
 
-    /* Cards Grid */
+    /* Grid Layouts */
     .grid-4 {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -217,37 +243,91 @@
       font-size: 0.95rem;
     }
 
-    /* About & Stats */
-    .about-section {
-      background: linear-gradient(180deg, var(--bg-dark) 0%, #100420 100%);
-      text-align: center;
+    /* About Section */
+    .about-split {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: center;
     }
 
-    .about-text {
-      max-width: 750px;
-      margin: auto;
-      font-size: 1.1rem;
+    .about-image {
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid var(--border-color);
+    }
+
+    .about-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .about-text p {
       color: var(--text-muted);
-      margin-bottom: 48px;
+      font-size: 1.05rem;
+      margin-bottom: 30px;
     }
 
     .stats-row {
       display: flex;
-      justify-content: center;
-      gap: 60px;
+      gap: 40px;
       border-top: 1px solid var(--border-color);
-      padding-top: 40px;
+      padding-top: 24px;
     }
 
     .stat-box h3 {
-      font-size: 2.8rem;
+      font-size: 2.2rem;
       color: var(--accent-gold);
       font-weight: 800;
     }
 
     .stat-box p {
-      font-size: 0.9rem;
+      font-size: 0.85rem;
       color: var(--text-muted);
+    }
+
+    /* Scale CTA Banner */
+    .scale-banner {
+      position: relative;
+      border-radius: 14px;
+      overflow: hidden;
+      border: 1px solid var(--border-color);
+      min-height: 280px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 40px 20px;
+      margin: 40px 0;
+    }
+
+    .scale-banner img.bg-image {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: brightness(0.35);
+      z-index: 1;
+    }
+
+    .scale-content {
+      position: relative;
+      z-index: 2;
+      max-width: 650px;
+    }
+
+    .scale-content h2 {
+      font-size: 2.2rem;
+      margin-bottom: 12px;
+    }
+
+    .scale-content p {
+      color: var(--text-muted);
+      margin-bottom: 24px;
     }
 
     /* Testimonials */
@@ -256,7 +336,6 @@
       border: 1px solid var(--border-color);
       border-radius: 12px;
       padding: 30px;
-      position: relative;
     }
 
     .testimonial-card p {
@@ -271,16 +350,19 @@
       color: var(--accent-gold);
     }
 
-    /* Location & Map Section */
+    /* Presence Section */
     .location-box {
       background: var(--bg-card);
       border-radius: 12px;
       border: 1px solid var(--border-color);
-      padding: 40px;
+      overflow: hidden;
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 32px;
       align-items: center;
+    }
+
+    .location-info {
+      padding: 40px;
     }
 
     .location-info h3 {
@@ -302,11 +384,23 @@
       color: #fff;
     }
 
+    .location-img-wrap {
+      height: 100%;
+      min-height: 320px;
+    }
+
+    .location-img-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
     /* Footer */
     footer {
       border-top: 1px solid var(--border-color);
       padding: 60px 0 30px;
-      background: #0f031c;
+      background: #0d0219;
       font-size: 0.9rem;
     }
 
@@ -349,11 +443,12 @@
     }
 
     @media (max-width: 900px) {
-      .hero h1 { font-size: 2.5rem; }
+      .hero h1 { font-size: 2.4rem; }
+      .about-split { grid-template-columns: 1fr; }
       .location-box { grid-template-columns: 1fr; }
       .footer-grid { grid-template-columns: 1fr 1fr; }
       .nav-links { display: none; }
-      .stats-row { flex-direction: column; gap: 24px; }
+      .stats-row { flex-direction: column; gap: 16px; }
     }
   </style>
 </head>
@@ -362,7 +457,10 @@
   <!-- Navigation -->
   <header class="container">
     <nav class="navbar">
-      <div class="logo">ADOPT<span>2</span>SCALE</div>
+      <a href="#" class="nav-brand">
+        <img src="icons/Adopt2Scale.png" alt="Adopt2Scale Logo" />
+        <span>ADOPT2SCALE</span>
+      </a>
       <ul class="nav-links">
         <li><a href="#services">Services</a></li>
         <li><a href="#about">About Us</a></li>
@@ -381,6 +479,11 @@
     <div class="hero-buttons">
       <a href="#contact" class="btn btn-gold">Contact Sales</a>
       <a href="#services" class="btn btn-outline">Explore Services</a>
+    </div>
+
+    <!-- Hero Landing Image -->
+    <div class="hero-banner-wrap">
+      <img src="icons/Landing.png" alt="Saudi Arabia Business Infrastructure" />
     </div>
   </section>
 
@@ -410,28 +513,33 @@
     </div>
   </section>
 
-  <!-- About Section & Stats -->
-  <section id="about" class="about-section">
-    <div class="container">
-      <div class="section-header">
-        <span>About Adopt2Scale</span>
-        <h2>Driving Innovation Across the Kingdom</h2>
+  <!-- About Section -->
+  <section id="about" class="container">
+    <div class="about-split">
+      <div class="about-image">
+        <img src="icons/About.png" alt="About Adopt2Scale Operations" />
       </div>
-      <p class="about-text">
-        Founded with a mission to bridge the gap between ambition and execution, Adopt2Scale partners with enterprises, startups, and international firms to deliver transformative, lasting market integration across Saudi Arabia and the wider GCC.
-      </p>
-      <div class="stats-row">
-        <div class="stat-box">
-          <h3>150+</h3>
-          <p>Projects Delivered</p>
+      <div class="about-text">
+        <div class="section-header" style="text-align: left; margin-bottom: 20px;">
+          <span>About Adopt2Scale</span>
+          <h2>Driving Innovation Across the Kingdom</h2>
         </div>
-        <div class="stat-box">
-          <h3>40+</h3>
-          <p>Enterprise Clients</p>
-        </div>
-        <div class="stat-box">
-          <h3>98%</h3>
-          <p>Client Retention</p>
+        <p>
+          Founded with a mission to bridge the gap between ambition and execution, Adopt2Scale partners with enterprises, startups, and international firms to deliver transformative, lasting market integration across Saudi Arabia and the wider GCC.
+        </p>
+        <div class="stats-row">
+          <div class="stat-box">
+            <h3>150+</h3>
+            <p>Projects Delivered</p>
+          </div>
+          <div class="stat-box">
+            <h3>40+</h3>
+            <p>Enterprise Clients</p>
+          </div>
+          <div class="stat-box">
+            <h3>98%</h3>
+            <p>Client Retention</p>
+          </div>
         </div>
       </div>
     </div>
@@ -455,6 +563,18 @@
       <div class="card">
         <h3>Deep Local Expertise</h3>
         <p>Comprehensive knowledge of Saudi regulatory frameworks, government portals, and local ecosystems.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Scale CTA Banner -->
+  <section class="container">
+    <div class="scale-banner">
+      <img src="icons/Scale.png" alt="Scale Banner Background" class="bg-image" />
+      <div class="scale-content">
+        <h2>Ready to Scale Your Business?</h2>
+        <p>Let's discuss how Adopt2Scale can accelerate your growth and help you achieve your strategic objectives in the Kingdom.</p>
+        <a href="#contact" class="btn btn-gold">Schedule a Call</a>
       </div>
     </div>
   </section>
@@ -485,7 +605,7 @@
   <section id="contact" class="container">
     <div class="location-box">
       <div class="location-info">
-        <span>Our Presence</span>
+        <span style="color: var(--accent-gold); font-size: 0.85rem; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase;">Our Presence</span>
         <h3>Headquartered in Riyadh</h3>
         <p>Strategically located in Riyadh's business district to serve clients across the Kingdom with agility and responsiveness.</p>
         <div class="contact-details">
@@ -496,8 +616,8 @@
         <br>
         <a href="mailto:info@adoptoscale.com" class="btn btn-gold">Send an Inquiry</a>
       </div>
-      <div style="background: rgba(198, 156, 67, 0.05); border: 1px dashed var(--border-color); border-radius: 8px; height: 260px; display: flex; align-items: center; justify-content: center; color: var(--text-muted);">
-        [ Interactive Map / Riyadh Skyline Visual ]
+      <div class="location-img-wrap">
+        <img src="icons/Riyadh.png" alt="Riyadh Skyline and Location" />
       </div>
     </div>
   </section>
@@ -506,7 +626,10 @@
   <footer>
     <div class="container footer-grid">
       <div class="footer-col">
-        <div class="logo" style="margin-bottom: 12px;">ADOPT<span>2</span>SCALE</div>
+        <div class="nav-brand" style="margin-bottom: 16px;">
+          <img src="icons/Adopt2Scale.png" alt="Adopt2Scale Logo" />
+          <span>ADOPT2SCALE</span>
+        </div>
         <p style="color: var(--text-muted); font-size: 0.85rem;">
           Empowering business in Saudi Arabia with strategic consulting, operational setup, and long-term scaling solutions.
         </p>
