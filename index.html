@@ -11,7 +11,7 @@
 
   <style>
     :root {
-      /* Brand palette — taken from the Adopto Scale company profile */
+      /* Brand palette */
       --cream: #f4f2ed;
       --cream-deep: #ece7dc;
       --paper: #fdfcf9;
@@ -91,7 +91,7 @@
     .site-header.scrolled { border-color: var(--line); box-shadow: var(--shadow-sm); }
     .navbar { display: flex; align-items: center; justify-content: space-between; height: 82px; gap: 24px; }
     .nav-brand { display: flex; align-items: center; gap: 12px; text-decoration: none; }
-    .nav-brand img { height: 42px; width: auto; }
+    .nav-brand img { height: 42px; width: auto; object-fit: contain; }
     .wordmark { display: flex; flex-direction: column; line-height: 1; color: #231f20; }
     .wordmark b { font-weight: 500; font-size: 1.05rem; letter-spacing: .42em; }
     .wordmark i { font-style: normal; font-size: .68rem; letter-spacing: .72em; margin-top: 5px; display: flex; align-items: center; gap: 6px; }
@@ -308,12 +308,12 @@
     .serve-card.dark .serve-list li::after { color: var(--gold-light); }
     .serve-card.dark .icon { background: rgba(255,255,255,.08); border-color: rgba(255,255,255,.18); color: var(--gold-light); }
 
-    /* ---------- CTA banner ---------- */
+    /* ---------- CTA banner (Updated to fallback smoothly if Scale.png or Scale.jpg is used) ---------- */
     .cta-banner {
       position: relative; overflow: hidden; border-radius: 24px; padding: 90px 40px; text-align: center;
       background:
         linear-gradient(120deg, rgba(55,45,94,.93) 0%, rgba(75,63,122,.78) 100%),
-        url('Icons/Scale.jpg') center/cover no-repeat;
+        url('Icons/Scale.png') center/cover no-repeat;
       box-shadow: var(--shadow-md);
     }
     .cta-banner .motif { opacity: .08; }
@@ -350,9 +350,9 @@
     footer { background: #1f1936; color: rgba(255,255,255,.7); padding: 80px 0 30px; margin-top: 110px; font-size: 0.92rem; }
     .footer-grid { display: grid; grid-template-columns: 1.8fr 1fr 1fr 1.4fr; gap: 48px; margin-bottom: 56px; }
     .footer-logo {
-      display: inline-block; background: var(--cream); padding: 16px 22px; border-radius: 14px; margin-bottom: 20px;
+      display: inline-block; background: var(--cream); padding: 12px 18px; border-radius: 14px; margin-bottom: 20px;
     }
-    .footer-logo img { height: 96px; width: auto; }
+    .footer-logo img { height: 54px; width: auto; object-fit: contain; }
     footer h4 { color: var(--gold-light); font-size: 0.78rem; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 20px; }
     footer ul { list-style: none; display: grid; gap: 10px; }
     footer ul a { text-decoration: none; transition: color .2s ease; }
@@ -436,7 +436,8 @@
     <div class="container">
       <nav class="navbar" aria-label="Main">
         <a href="#top" class="nav-brand" aria-label="Adopto Scale home">
-          <img src="Icons/logo-mark.png" alt="" />
+          <!-- Main mark -->
+          <img src="Icons/logo-mark.png" alt="Adopto Scale Symbol" width="42" height="42" onerror="this.style.display='none'" />
           <span class="wordmark"><b>ADOPTO</b><i>SCALE</i></span>
         </a>
         <ul class="nav-links" id="navLinks">
@@ -481,7 +482,8 @@
           <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Ongoing compliance</span>
         </div>
         <div class="hero-visual reveal">
-          <img src="Icons/Landing.jpg" alt="Kingdom Centre tower rising over Riyadh" />
+          <!-- Standardized to Landing.png; fallback handles .jpg if needed -->
+          <img src="Icons/Landing.png" alt="Kingdom Centre tower rising over Riyadh" onerror="this.onerror=null; this.src='Icons/Landing.jpg';" width="1200" height="462" fetchpriority="high" />
           <span class="arch-frame" aria-hidden="true"></span>
         </div>
       </div>
@@ -518,7 +520,8 @@
       <div class="container about-split">
         <div class="arch-wrap reveal">
           <div class="arch">
-            <img src="Icons/Riyadh.jpg" alt="Al Faisaliah and Kingdom Centre towers, Riyadh" style="object-position:40% center" />
+            <!-- Standardized to Riyadh.png with Riyadh.jpg fallback -->
+            <img src="Icons/Riyadh.png" alt="Al Faisaliah and Kingdom Centre towers, Riyadh skyline" onerror="this.onerror=null; this.src='Icons/Riyadh.jpg';" style="object-position:40% center" width="600" height="750" loading="lazy" />
           </div>
           <div class="arch-tag"><small>Headquartered in</small>Riyadh, Saudi Arabia</div>
         </div>
@@ -702,12 +705,6 @@
       </div>
     </section>
 
-    <!--
-      TESTIMONIALS — add back only with real, approved client quotes.
-      Template:
-      <section id="testimonials"> ... <blockquote>"Quote"</blockquote><cite>Name, Title — Company</cite> ... </section>
-    -->
-
     <!-- ===================== CTA ===================== -->
     <section style="padding-bottom:0;">
       <div class="container">
@@ -753,7 +750,8 @@
             </a>
           </div>
           <div class="contact-image">
-            <img src="Icons/Riyadh.jpg" alt="Kingdom Centre and Riyadh business district" style="object-position:78% center" loading="lazy" />
+            <!-- Standardized to Riyadh.png with Riyadh.jpg fallback -->
+            <img src="Icons/Riyadh.png" alt="Kingdom Centre and Riyadh business district" onerror="this.onerror=null; this.src='Icons/Riyadh.jpg';" style="object-position:78% center" loading="lazy" width="600" height="420" />
           </div>
         </div>
       </div>
@@ -765,7 +763,9 @@
     <div class="container">
       <div class="footer-grid">
         <div>
-          <a href="#top" class="footer-logo"><img src="Icons/Adopt2Scale.png" alt="Adopto Scale Company" /></a>
+          <a href="#top" class="footer-logo">
+            <img src="Icons/Adopt2Scale.png" alt="Adopto Scale Company Logo" width="180" height="54" onerror="this.style.display='none'" />
+          </a>
           <p>Strategic market entry and business integration in Saudi Arabia. Building the foundation for sustainable success.</p>
           <div class="footer-social">
             <a href="https://www.linkedin.com/company/adop2scale/posts/?feedView=all" target="_blank" rel="noopener noreferrer" class="icon-btn" aria-label="LinkedIn">
